@@ -1,0 +1,43 @@
+<!--Giovanni LaVant-->
+<!DOCTYPE html>
+<html>
+<head>
+    <!--styled with position: absolute; to enable movement-->
+  <style>
+    #myImage {
+      position: absolute;
+    }
+  </style>
+</head>
+<body>
+  <button onclick="startMoving()" style="background-color: aqua;">Start</button>
+  <button onclick="stopMoving()" style="background-color: red;">Stop</button>
+  <img id="myImage" src="/Users/giolavant/123.png" alt="meme">
+
+  <script>
+    var intervalId;
+
+    function startMoving() {
+      var image = document.getElementById('myImage');
+      var position = 0;
+
+      // Start moving the image every 10 milliseconds
+      intervalId = setInterval(frame, 10);
+        //frame function >> every 10 milliseconds which moves the image by changing its top and left styles.
+      function frame() {
+        if (position == 350) {
+          clearInterval(intervalId);
+        } else {
+          position++;
+          image.style.top = position + 'px';
+          image.style.left = position + 'px';
+        }
+      }
+    }
+    //When the "Stop" button is clicked, the interval is cleared using the saved intervalId.
+    function stopMoving() {
+      clearInterval(intervalId);
+    }
+  </script>
+</body>
+</html>
